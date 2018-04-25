@@ -1,0 +1,8 @@
+header {
+  display: block;
+  text-align: center;
+}
+img {
+  border: 2px solid darkred;
+  height: 100px;
+}

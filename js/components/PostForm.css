@@ -1,0 +1,25 @@
+.PostForm {
+  text-align: center;
+  color: red;
+}
+
+.PostForm .textInput{
+  display: inline-block;
+  text-align: left;
+  width: 90%;
+  max-width: 800px;
+  height: 5em;
+}
+
+.PostForm .button{
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+  width: 12em;
+  height: 3em;
+}
+
+.PostForm input{
+  display: none;
+
+}

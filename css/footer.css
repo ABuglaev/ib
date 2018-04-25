@@ -1,0 +1,8 @@
+footer {
+  display: block;
+  text-align: center;
+}
+
+footer span {
+  color: darkred;
+}

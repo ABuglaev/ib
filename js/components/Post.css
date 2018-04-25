@@ -1,0 +1,21 @@
+.Post {
+  margin: 10px;
+  padding: 5px;
+  border: 2px solid darkred;
+  border-radius: 5px;
+  min-height: 40px;
+
+}
+
+.Post p{
+  margin: 0;
+  text-align: justify;
+  text-indent: 1em;
+}
+
+.date {
+  display: block;
+  text-align: right;
+  color: darkgreen;
+  font-size: .8em;
+}

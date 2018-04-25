@@ -1,0 +1,24 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: wheat;
+  text-align: center;
+}
+
+#content nav {
+  text-align: center;
+}
+h2 {
+  display: inline-block;
+  margin: auto;
+  padding: 0 20px;
+}
+h2 a{
+  color: rgb(82, 164, 189);
+}
+
+#root {
+  display: inline-block;
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 10px;
+}

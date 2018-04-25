@@ -1,0 +1,49 @@
+.PostForm {
+  text-align: center;
+  color: red;
+}
+
+.PostForm .textInput{
+  display: inline-block;
+  text-align: left;
+  width: 90%;
+  max-width: 800px;
+  height: 5em;
+}
+
+.PostForm .button{
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+  width: 12em;
+  height: 3em;
+}
+
+.PostForm input{
+  display: none;
+
+}.feed {
+  width: 100%;
+
+  display: inline-block;
+}.Post {
+  margin: 10px;
+  padding: 5px;
+  border: 2px solid darkred;
+  border-radius: 5px;
+  min-height: 40px;
+
+}
+
+.Post p{
+  margin: 0;
+  text-align: justify;
+  text-indent: 1em;
+}
+
+.date {
+  display: block;
+  text-align: right;
+  color: darkgreen;
+  font-size: .8em;
+}
