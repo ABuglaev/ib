@@ -21,9 +21,8 @@ export default class Feed extends React.Component{
       method: 'get',
       url: 'http://tonight.by:3012/posts',
     }).then((response) => {
-      console.log(response);
       this.setState({
-        postsArray: response.data,
+        postsArray: response.data.sort((v1,v2) => v1.date > v2.date),
       });
     }).then( setTimeout(this.update, 3000)); // <- autoupdate
   }
@@ -41,7 +40,8 @@ export default class Feed extends React.Component{
       className='post' 
       key={`${v._id}`} 
       text={v.text} 
-      date={v.date} />
+      date={v.date} 
+      imageURL={v.imageURL} />
     );
 
     return (

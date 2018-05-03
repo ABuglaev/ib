@@ -13,18 +13,14 @@ import axios from 'axios';
 //     });
 //   }
 
-  let sendPost = function(_text/*,file*/){
+  let sendPost = function(_formData){
     console.log('trying to send');
 
     axios({
       method: 'post',
       url: 'http://tonight.by:3012/posts',
-      //headers: { 'content-type': 'multipart/form-data' },
-      data: {
-        text: _text,
-        date: new Date(),
-        //file: _file,
-      }
+      headers: { 'content-type': 'multipart/form-data' },
+      data: _formData,
     })
     .then(function (response) {
       console.log(response);

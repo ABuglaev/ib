@@ -2,7 +2,7 @@ header {
   display: block;
   text-align: center;
 }
-img {
+header>img {
   border: 2px solid darkred;
   height: 100px;
 }

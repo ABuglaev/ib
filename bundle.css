@@ -32,18 +32,34 @@
   border: 2px solid darkred;
   border-radius: 5px;
   min-height: 40px;
+  text-align: left;
 
 }
-
-.Post p{
-  margin: 0;
-  text-align: justify;
-  text-indent: 1em;
-}
-
-.date {
+.Post .date {
   display: block;
   text-align: right;
   color: darkgreen;
   font-size: .8em;
 }
+
+.Post p{
+  /* display: flex;
+  align-items: stretch; */
+  margin: 0;
+}
+
+.Post .imageWrap{
+  padding: 5px;
+  display: block;
+  max-width: 40%;
+  float: left;
+}
+.Post img{
+  width: 100%;
+}
+.Post .clear{
+  clear: both;
+}
+
+
+

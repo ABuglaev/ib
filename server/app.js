@@ -1,11 +1,28 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
+var path = require('path');
+var multer = require('multer');
 var db;
 
+// Set storage engine
+const storage = multer.diskStorage({
+    destination: '../img',
+    filename: function(req, file, cb){
+        cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
+
+    }
+});
+
+//Init upload
+const upload = multer({
+    storage: storage
+}).single('image');
+
+
 var app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -13,6 +30,8 @@ app.use(function(req, res, next) {
     next();
 });
 
+//необходимо передать имя каталога, в котором находятся статические ресурсы, в функцию промежуточной обработки express.static
+app.use(express.static('../img'));
 
 
 //запуск БД на моем серваке
@@ -30,18 +49,36 @@ MongoClient.connect('mongodb://87.252.241.43:27017/myDB', function(err, database
 });
 
 app.post('/posts', function(req, res){
-    var post = {
-        text: req.body.text,
-        date: req.body.date,
-        //file: req.body.file
-    };
-    db.collection('posts').insert(post, function(err, result) {
+
+    upload(req, res, (err)=>{
         if (err) {
             console.log(err);
-            return res.sendStatus(500);
+        };
+
+        var post = {};
+
+        if (req.file) { //если есть картинка
+            post = {
+            text: req.body.text,
+            date: Date.now(),
+            imageURL: 'http://tonight.by/img/'+ req.file.filename,
+            }
+        } else {  //если картинки нет
+            post = {
+            text: req.body.text,
+            date: Date.now(),
+            };
         }
-        res.send(post);
-    });
+        console.log(post);
+        db.collection('posts').insert(post, function(err, result) {
+            if (err) {
+                console.log(err);
+                return res.sendStatus(500);
+            }
+        });
+        res.sendStatus(201);
+    })
+
 });
 
 app.get('/posts', function(req, res){
