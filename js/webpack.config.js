@@ -3,10 +3,10 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractCSS = new ExtractTextPlugin({
-    filename: "../bundle.css"
+    filename: "../css/bundle.css"
 });
 
-module.exports = { 
+module.exports = {
     entry: "./main.jsx", // основной файл приложения
     output:{ 
         path: __dirname, // путь к каталогу выходных файлов

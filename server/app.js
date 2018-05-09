@@ -10,7 +10,6 @@ const storage = multer.diskStorage({
     destination: '../img',
     filename: function(req, file, cb){
         cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
-
     }
 });
 
@@ -48,8 +47,8 @@ MongoClient.connect('mongodb://87.252.241.43:27017/myDB', function(err, database
 
 });
 
-app.post('/posts', function(req, res){
-
+app.post('/thread[1,2,3]', function(req, res){
+    console.log('post route works');
     upload(req, res, (err)=>{
         if (err) {
             console.log(err);
@@ -62,15 +61,17 @@ app.post('/posts', function(req, res){
             text: req.body.text,
             date: Date.now(),
             imageURL: 'http://tonight.by/img/'+ req.file.filename,
+            thread: req.body.thread,
             }
         } else {  //если картинки нет
             post = {
             text: req.body.text,
             date: Date.now(),
+            thread: req.body.thread,
             };
         }
-        console.log(post);
-        db.collection('posts').insert(post, function(err, result) {
+        
+        db.collection(req.body.thread).insert(post, function(err, result) {
             if (err) {
                 console.log(err);
                 return res.sendStatus(500);
@@ -81,8 +82,8 @@ app.post('/posts', function(req, res){
 
 });
 
-app.get('/posts', function(req, res){
-    db.collection('posts').find().toArray(function(err, docs){
+app.get('/thread[1,2,3]', function(req, res){
+    db.collection(`#${req.url.substring(1)}`).find().toArray(function(err, docs){
         if (err) {
             console.log(err);
             return res.sendStatus(500);

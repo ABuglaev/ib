@@ -43,8 +43,7 @@
 }
 
 .Post p{
-  /* display: flex;
-  align-items: stretch; */
+  white-space: pre-wrap;
   margin: 0;
 }
 

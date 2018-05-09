@@ -1,13 +1,15 @@
 
+if (!location.hash) location.hash = '#thread1';
+
 let hashchangeHandler = function(ev){
     switch (location.hash) {
-        case '#first':
+        case '#thread1':
         setFirstThread();
         break;
-        case '#second':
+        case '#thread2':
         setSecondThread();
         break;
-        case '#third':
+        case '#thread3':
         setThirdThread();
         break;
 
@@ -23,14 +25,13 @@ let setFirstThread = function() {
 }
 
 let setSecondThread = function() {
-    document.getElementsByTagName('body')[0].style.backgroundColor = 'lightskyblue';
-    document.getElementById('root').style.backgroundColor = 'lightblue';
+    document.getElementsByTagName('body')[0].style.backgroundColor = '#aaf';
+    document.getElementById('root').style.backgroundColor = '#ccf';
 }
 
 let setThirdThread = function() {
-    document.getElementsByTagName('body')[0].style.backgroundColor = 'palegreen';
-    document.getElementById('root').style.backgroundColor = 'lightcyan';
-
+    document.getElementsByTagName('body')[0].style.backgroundColor = '#afa';
+    document.getElementById('root').style.backgroundColor = '#cfc';
 }
 
 window.addEventListener('hashchange', hashchangeHandler);

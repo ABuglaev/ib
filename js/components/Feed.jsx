@@ -19,20 +19,21 @@ export default class Feed extends React.Component{
   update() {
     axios({
       method: 'get',
-      url: 'http://tonight.by:3012/posts',
+      url: `http://tonight.by:3012/${location.hash.substring(1)}`,
     }).then((response) => {
       this.setState({
-        postsArray: response.data.sort((v1,v2) => v1.date > v2.date),
+        postsArray: response.data,//.sort( (v1,v2) => v1.date > v2.date ),
       });
     }).then( setTimeout(this.update, 3000)); // <- autoupdate
   }
-  
+
   componentDidMount() {
     this.update();
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
+    window.addEventListener('hashchange', () => {
+      this.update();
+      this.setState({postsArray: []});
+      this.forceUpdate();
+    });
   }
 
   render() {

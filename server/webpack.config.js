@@ -1,6 +1,4 @@
 ﻿
-
-
 module.exports = { 
     entry: "./js/main.jsx", // основной файл приложения
     output:{ 
@@ -16,5 +14,4 @@ module.exports = {
             },         
         ] 
     },
-    
 }

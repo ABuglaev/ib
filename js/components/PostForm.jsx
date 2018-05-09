@@ -23,6 +23,7 @@ export default class PostForm extends React.Component{
     let onSendPostClick = () =>{
       let formData = new FormData();
         formData.append('text',  document.getElementById('textInput').value);
+        formData.append('thread', location.hash);
         if (document.getElementById('fileInput').files[0]) formData.append('image', document.getElementById('fileInput').files[0], document.getElementById('fileInput').files[0].name );
 
       sendPost(formData);
