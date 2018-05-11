@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import {sendPost, getPosts} from '../API.js';
+import {gendPost, getPosts} from '../API.js';
 import Post from './Post.jsx';
 
 export default class Feed extends React.Component{
@@ -14,21 +14,30 @@ export default class Feed extends React.Component{
       postsArray: [],
     }
     this.update = this.update.bind(this);
+    this.autoUpdate = this.autoUpdate.bind(this);
   }
 
   update() {
-    axios({
-      method: 'get',
-      url: `http://tonight.by:3012/${location.hash.substring(1)}`,
-    }).then((response) => {
+    getPosts().then((response) => {
       this.setState({
         postsArray: response.data,//.sort( (v1,v2) => v1.date > v2.date ),
       });
-    }).then( setTimeout(this.update, 3000)); // <- autoupdate
+    }) 
+  }
+
+  //именно так
+  autoUpdate() {
+    getPosts().then((response) => {
+      this.setState({
+        postsArray: response.data,//.sort( (v1,v2) => v1.date > v2.date ),
+      });
+    }).then(
+      setTimeout(this.autoUpdate, 3000)
+    );
   }
 
   componentDidMount() {
-    this.update();
+    this.autoUpdate();
     window.addEventListener('hashchange', () => {
       this.update();
       this.setState({postsArray: []});

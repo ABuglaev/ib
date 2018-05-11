@@ -17,7 +17,7 @@ import axios from 'axios';
     });
   }
 
-    let getPosts = axios({
+    let getPosts = () => axios({
       method: 'get',
       url: `http://tonight.by:3012/${location.hash.substring(1)}`,
     })
