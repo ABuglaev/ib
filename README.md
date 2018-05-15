@@ -9,6 +9,7 @@ http://tonight.by/
 Приложение неплохо смотрится и со смартфона<br>
 
 Всего в БД 3 коллекции(каждая на свой тред) форма документа в коллекции MongoDB выглядит так:
+<pre>
 {
   _id: 'some id',
   text: 'post text',
@@ -16,3 +17,4 @@ http://tonight.by/
   imageURL: 'http://tonight.by/img/someimage.jpg-timestamp.jpg', 
   thread: '#thread1'
 }
+</pre>
