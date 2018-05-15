@@ -21,6 +21,7 @@ export default class PostForm extends React.Component{
     }
 
     let onSendPostClick = () =>{
+      if(!document.getElementById('textInput').value && !document.getElementById('fileInput').value) return;
       let formData = new FormData();
         formData.append('text',  document.getElementById('textInput').value);
         formData.append('thread', location.hash);
@@ -34,7 +35,7 @@ export default class PostForm extends React.Component{
 
     return (
       <form className='PostForm' name='postForm'>
-        <textarea class='textInput' id='textInput' name='text' placeholder='type your post here'> </textarea>
+        <textarea class='textInput' id='textInput' name='text' placeholder='type your post here'></textarea>
         <br />
         <input type='file' name='image' id='fileInput' onChange={onFileSelect}/>
         <button className='button selectButton' type='button' onClick={onSelectFileButton} id='fileSelectButton'>Select image</button>

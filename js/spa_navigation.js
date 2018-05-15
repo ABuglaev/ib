@@ -18,20 +18,20 @@ let hashchangeHandler = function(ev){
         break;
     }
 }
-
+//Стили в скрипте навигации? А что...
 let setFirstThread = function() {
-    document.getElementsByTagName('body')[0].style.backgroundColor = 'wheat';
-    document.getElementById('root').style.backgroundColor = 'oldlace';
+    document.getElementsByTagName('body')[0].style.background = 'linear-gradient(to bottom right, wheat, oldlace, wheat, oldlace, wheat, oldlace)';
+    document.getElementById('root').style.background = 'oldlace';
 }
 
 let setSecondThread = function() {
-    document.getElementsByTagName('body')[0].style.backgroundColor = '#aaf';
-    document.getElementById('root').style.backgroundColor = '#ccf';
+    document.getElementsByTagName('body')[0].style.background = 'linear-gradient(to bottom right, #ccf, #aaf, #ccf, #aaf, #ccf, #aaf)';
+    document.getElementById('root').style.background = '#ddf';
 }
 
 let setThirdThread = function() {
-    document.getElementsByTagName('body')[0].style.backgroundColor = '#afa';
-    document.getElementById('root').style.backgroundColor = '#cfc';
+    document.getElementsByTagName('body')[0].style.background = 'linear-gradient(to bottom right, #cfc, #afa, #cfc, #afa, #cfc, #afa)';
+    document.getElementById('root').style.background = '#dfd';
 }
 
 window.addEventListener('hashchange', hashchangeHandler);

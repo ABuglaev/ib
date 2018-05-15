@@ -20,16 +20,16 @@ export default class Feed extends React.Component{
   update() {
     getPosts().then((response) => {
       this.setState({
-        postsArray: response.data,//.sort( (v1,v2) => v1.date > v2.date ),
+        postsArray: response.data,
       });
-    }) 
+    })
   }
 
   //именно так
   autoUpdate() {
     getPosts().then((response) => {
       this.setState({
-        postsArray: response.data,//.sort( (v1,v2) => v1.date > v2.date ),
+        postsArray: response.data,
       });
     }).then(
       setTimeout(this.autoUpdate, 3000)
@@ -40,8 +40,6 @@ export default class Feed extends React.Component{
     this.autoUpdate();
     window.addEventListener('hashchange', () => {
       this.update();
-      this.setState({postsArray: []});
-      this.forceUpdate();
     });
   }
 

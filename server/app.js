@@ -41,7 +41,7 @@ app.use(express.static('../img'));
 
 
 //запуск БД на моем серваке
-MongoClient.connect('mongodb://87.252.241.43:27017/myDB', function(err, database){
+MongoClient.connect('mongodb://127.0.0.1:27141/myDB', function(err, database){
     if(err) {
         return console.log(err);
     }
@@ -87,6 +87,16 @@ app.post('/thread[1,2,3]', function(req, res){
         res.sendStatus(201);
     })
 
+});
+
+//If u r reading this, don't use it please
+app.delete('/ggwp', function(req, res){
+    console.log('clear all');
+    db.collection('#thread1').remove( { } );
+    db.collection('#thread2').remove( { } );
+    db.collection('#thread3').remove( { } );
+
+    res.sendStatus(200);
 });
 
 app.get('/thread[1,2,3]', function(req, res){
