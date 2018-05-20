@@ -17,7 +17,7 @@ var storage = multer.diskStorage({
 var upload = multer({ //multer settings
     storage: storage,
     fileFilter: function (req, file, callback) {
-        var ext = path.extname(file.originalname);
+        var ext = path.extname(file.originalname).toLowerCase();
         if(ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
             return callback(new Error('Only images are allowed'))
         }
