@@ -1,10 +1,10 @@
-import './feed.css';
+import './Feed.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import {gendPost, getPosts} from '../API.js';
+import {sendPost, getPosts} from '../API.js';
 import Post from './Post.jsx';
 
 export default class Feed extends React.Component{

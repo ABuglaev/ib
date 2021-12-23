@@ -7,7 +7,7 @@ var db;
 
 // Set storage engine
 var storage = multer.diskStorage({
-    destination: '../img',
+    destination: '/var/www/html/img',
     filename: function(req, file, cb){
         cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
     }
@@ -56,6 +56,7 @@ MongoClient.connect('mongodb://127.0.0.1:27141/myDB', function(err, database){
 
 app.post('/thread[1,2,3]', function(req, res){
     console.log('post route works');
+    console.log('image?');
     upload(req, res, (err)=>{
         if (err) {
             console.log(err);
@@ -64,10 +65,11 @@ app.post('/thread[1,2,3]', function(req, res){
         var post = {};
 
         if (req.file) { //если есть картинка
+	    console.log('We have an image!');
             post = {
             text: req.body.text,
             date: Date.now(),
-            imageURL: 'http://tonight.by/img/'+ req.file.filename,
+            imageURL: 'http://13.53.158.8/img/'+ req.file.filename,
             thread: req.body.thread,
             }
         } else {  //если картинки нет
@@ -78,7 +80,7 @@ app.post('/thread[1,2,3]', function(req, res){
             };
         }
         
-        db.collection(req.body.thread).insert(post, function(err, result) {
+        db.collection(`${req.url.substring(1)}`).insert(post, function(err, result) {
             if (err) {
                 console.log(err);
                 return res.sendStatus(500);
@@ -92,15 +94,15 @@ app.post('/thread[1,2,3]', function(req, res){
 //If u r reading this, don't use it please
 app.delete('/ggwp', function(req, res){
     console.log('clear all');
-    db.collection('#thread1').remove( { } );
-    db.collection('#thread2').remove( { } );
-    db.collection('#thread3').remove( { } );
+    db.collection('thread1').remove( { } );
+    db.collection('thread2').remove( { } );
+    db.collection('thread3').remove( { } );
 
     res.sendStatus(200);
 });
 
 app.get('/thread[1,2,3]', function(req, res){
-    db.collection(`#${req.url.substring(1)}`).find().toArray(function(err, docs){
+    db.collection(`${req.url.substring(1)}`).find().toArray(function(err, docs){
         if (err) {
             console.log(err);
             return res.sendStatus(500);

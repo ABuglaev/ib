@@ -2,12 +2,15 @@ import axios from 'axios';
 
   let sendPost = function(_formData){
     console.log('trying to send...');
+	  for (var value of _formData.values()) {
+   console.log(value);
+}
     //по уму было бы лучше URL передать как аргумент, но оставлю пока так.
     //а можно было бы прилепить Redux, и завести переменную что-то типа activeThread
     //и URL составить исходя из этой переменной.
     axios({
       method: 'post',
-      url: `http://tonight.by:3012/${location.hash.substring(1)}`,
+      url: `http://13.53.158.8:3012/${location.hash.substring(1)}`,
       headers: { 'content-type': 'multipart/form-data' },
       data: _formData,
     })
@@ -21,7 +24,7 @@ import axios from 'axios';
 
     let getPosts = () => axios({
       method: 'get',
-      url: `http://tonight.by:3012/${location.hash.substring(1)}`,
+      url: `http://13.53.158.8:3012/${location.hash.substring(1)}`,
     })
     .catch(function (error) {
       console.log(error);

@@ -1,4 +1,4 @@
-import './post.css';
+import './Post.css';
 import React from 'react';
 
 export default class Post extends React.Component{
