@@ -10,7 +10,7 @@ import axios from 'axios';
     //и URL составить исходя из этой переменной.
     axios({
       method: 'post',
-      url: `http://13.53.158.8:3012/${location.hash.substring(1)}`,
+      url: `http://3.64.28.37:3012/${location.hash.substring(1)}`,
       headers: { 'content-type': 'multipart/form-data' },
       data: _formData,
     })
@@ -24,7 +24,7 @@ import axios from 'axios';
 
     let getPosts = () => axios({
       method: 'get',
-      url: `http://13.53.158.8:3012/${location.hash.substring(1)}`,
+      url: `http://3.64.28.37:3012/${location.hash.substring(1)}`,
     })
     .catch(function (error) {
       console.log(error);

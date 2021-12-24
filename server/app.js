@@ -41,7 +41,8 @@ app.use(express.static('../img'));
 
 
 //запуск БД на моем серваке
-MongoClient.connect('mongodb://127.0.0.1:27141/myDB', function(err, database){
+//MongoClient.connect('mongodb://127.0.0.1:27141/myDB', function(err, database){
+MongoClient.connect('mongodb://mongoUser:<insertYourPassword>@tonight-awsmongodb.cu3crpeyzais.eu-central-1.docdb.amazonaws.com:27141/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&retryWrites=false/myDB', function(err, database){
     if(err) {
         return console.log(err);
     }
