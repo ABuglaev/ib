@@ -5,7 +5,8 @@
   "main": "main.jsx",
   "scripts": {
     "build": ".\\node_modules\\.bin\\webpack --watch",
-    "livebuild": ".\\node_modules\\.bin\\webpack-dev-server --progress --colors"
+    "livebuild": ".\\node_modules\\.bin\\webpack-dev-server --progress --colors",
+    "buildProd": ".\\node_modules\\.bin\\webpack"
   },
   "author": "ABuglaev",
   "license": "ISC",
