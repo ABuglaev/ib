@@ -15,5 +15,8 @@
     "multer": "^1.3.0",
     "path": "^0.12.7"
   },
+   "globalDependencies": [
+    "forever",
+  ],
   "devDependencies": {}
 }
