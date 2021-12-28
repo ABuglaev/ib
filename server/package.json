@@ -16,7 +16,7 @@
     "path": "^0.12.7"
   },
    "globalDependencies": {
-    "forever",
+    "forever"
    },
   "devDependencies": {}
 }
