@@ -12,4 +12,6 @@ RUN npm install
 
 EXPOSE 3012
 
+EXPOSE 80
+
 CMD ["nodejs", "app.js"]
