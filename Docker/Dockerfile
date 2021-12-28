@@ -1,6 +1,6 @@
 FROM ubuntu/nginx:1.18-20.04_edge
 
-COPY myapp /var/www/html
+COPY . /var/www/html
 
 RUN apt update && apt install nodejs npm -y
 
