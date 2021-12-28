@@ -1,13 +1,17 @@
 FROM ubuntu/nginx:1.18-20.04_edge
 
-COPY . /var/www/html
+COPY myapp /var/www/html
 
-RUN apt update && apt install nodejs npm -y
+RUN apt update \
+        && apt install nodejs npm -y \
+        && rm -rf /var/lib/apt/lists/*
 
-RUN npm install /var/www/html/server/
+WORKDIR /var/www/html/server/
 
-RUN nodejs /var/www/html/server/app.js
+RUN npm install
 
 EXPOSE 3012
 
 EXPOSE 80
+
+CMD ["nodejs", "app.js"]
