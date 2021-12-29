@@ -1,4 +1,4 @@
-FROM ubuntu/nginx:1.18-20.04_edge
+FROM ubuntu/nginx
 
 COPY . /var/www/html
 
