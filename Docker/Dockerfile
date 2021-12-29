@@ -2,12 +2,10 @@ FROM ubuntu/nginx
 
 COPY . /var/www/html
 
-#RUN apt update && apt install nodejs npm -y
+RUN apt update && apt install nodejs npm -y
 
-#RUN cd /var/www/html/server/ && ls -la && npm install
+RUN cd /var/www/html/server/ && ls -la && npm install
 
-#EXPOSE 3012
+EXPOSE 3012
 
-#EXPOSE 80
-
-#CMD ["nodejs", "/var/www/html/server/app.js"]
+CMD ["nodejs", "/var/www/html/server/app.js"]
