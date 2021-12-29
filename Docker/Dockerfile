@@ -16,7 +16,7 @@ FROM nginx:stable-alpine
 
 COPY . /www
 
-RUN apk add --update npm
+RUN apk add --update npm openrc 
 
 RUN cd /www/server/ && npm install
 
