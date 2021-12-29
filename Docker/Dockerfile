@@ -8,4 +8,4 @@ RUN cd /var/www/html/server/ && ls -la && npm install
 
 EXPOSE 3012
 
-#CMD ["nodejs", "/var/www/html/server/app.js"]
+CMD ["nodejs" "/var/www/html/server/app.js"]
