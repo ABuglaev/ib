@@ -24,4 +24,4 @@ EXPOSE 3012
 
 EXPOSE 80
 
-CMD ["sh", "-c", "service nginx start && nodejs /var/www/html/server/app.js"]
+CMD ["sh", "-c", "rc-service nginx start && nodejs /var/www/html/server/app.js"]
