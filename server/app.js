@@ -8,23 +8,18 @@ var multerS3 = require('multer-s3')
 var s3 = new aws.S3({apiVersion: '2006-03-01'})
 var db;
 
-// Call S3 to list the buckets
-s3.listBuckets(function(err, data) {
-  if (err) {
-    console.log("Error", err);
-  } else {
-    console.log("Success", data.Buckets);
-  }
-});
-
-
-// Set storage engine
-var storage = multer.diskStorage({
-    destination: '/var/www/html/img',
-    filename: function(req, file, cb){
+//set storage engine
+var storage = multerS3({
+    s3: s3,
+    bucket: 'tonight-img',
+    key: function(req, file, cb){
         cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
+    },
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
     }
 });
+
 
 //Init upload
 var upload = multer({ //multer settings
@@ -49,13 +44,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-//необходимо передать имя каталога, в котором находятся статические ресурсы, в функцию промежуточной обработки express.static
-app.use(express.static('../img'));
+console.log(process.env.MP);
 
-
-//запуск БД на моем серваке
-//MongoClient.connect('mongodb://127.0.0.1:27141/myDB', function(err, database){
-MongoClient.connect('mongodb://mongoUser:' + process.env.MP + '@tonight-documentdb.cu3crpeyzais.eu-central-1.docdb.amazonaws.com:27141/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&retryWrites=false/myDB', function(err, database){
+//connect to AWS Mongo
+MongoClient.connect('mongodb://mongoUser:'+process.env.MP+'@tonight-documentdb.cu3crpeyzais.eu-central-1.docdb.amazonaws.com:27141/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&retryWrites=false/myDB', function(err, database){
     if(err) {
         return console.log(err);
     }
@@ -79,11 +71,12 @@ app.post('/thread[1,2,3]', function(req, res){
         var post = {};
 
         if (req.file) { //если есть картинка
-	    console.log('We have an image!');
+            console.log('We have an image!');
+            console.log(JSON.stringify(req.file));
             post = {
             text: req.body.text,
             date: Date.now(),
-            imageURL: 'http://13.53.158.8/img/'+ req.file.filename,
+            imageURL: 'https://tonight-img.s3.eu-central-1.amazonaws.com/' + req.file.key,
             thread: req.body.thread,
             }
         } else {  //если картинки нет
@@ -93,7 +86,7 @@ app.post('/thread[1,2,3]', function(req, res){
             thread: req.body.thread,
             };
         }
-        
+
         db.collection(`${req.url.substring(1)}`).insert(post, function(err, result) {
             if (err) {
                 console.log(err);
