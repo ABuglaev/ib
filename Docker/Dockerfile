@@ -1,10 +1,24 @@
-FROM ubuntu/nginx
+#FROM ubuntu/nginx
+#
+#COPY . /var/www/html
+#
+#RUN apt update && apt install nodejs npm -y
+#
+#RUN cd /var/www/html/server/ && ls -la && npm install
+#
+#EXPOSE 3012
+#
+#EXPOSE 80
+#
+#CMD ["sh", "-c", "service nginx start && nodejs /var/www/html/server/app.js"]
 
-COPY . /var/www/html
+FROM nginx:stable-alpine
 
-RUN apt update && apt install nodejs npm -y
+COPY . /www
 
-RUN cd /var/www/html/server/ && ls -la && npm install
+RUN apk add --update npm
+
+RUN cd /var/www/html/server/ && npm install
 
 EXPOSE 3012
 
