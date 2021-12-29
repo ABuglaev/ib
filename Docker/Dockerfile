@@ -8,4 +8,6 @@ RUN cd /var/www/html/server/ && ls -la && npm install
 
 EXPOSE 3012
 
-CMD ["node", "/var/www/html/server/app.js", ";", "nginx", "-g", "daemon off;"]
+EXPOSE 80
+
+CMD ["sh", "-c", "service nginx start && nodejs /var/www/html/server/app.js"]
