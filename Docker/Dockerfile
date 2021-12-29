@@ -26,4 +26,4 @@ EXPOSE 80
 
 #CMD ["sh", "-c", "rc-service nginx start && nodejs /var/www/html/server/app.js"]
 
-CMD ["sh", "-c", "nodejs /www/server/app.js"]
+CMD ["sh", "-c", "node /www/server/app.js"]
