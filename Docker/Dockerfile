@@ -12,4 +12,4 @@ EXPOSE 3012
 
 EXPOSE 80
 
-CMD ["forever","-c nodejs /var/www/html/server/app.js"]
+CMD ["forever -c nodejs /var/www/html/server/app.js"]
