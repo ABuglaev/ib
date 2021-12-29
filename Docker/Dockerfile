@@ -8,7 +8,7 @@ RUN cd /var/www/html/server/
 
 RUN ls -la
 
-#RUN npm install
+RUN npm install
 
 #EXPOSE 3012
 
