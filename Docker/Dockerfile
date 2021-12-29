@@ -6,10 +6,8 @@ RUN apt update && apt install nodejs npm -y
 
 RUN npm install /var/www/html/server/
 
-RUN npm install forever -g
-
 EXPOSE 3012
 
 EXPOSE 80
 
-CMD ["forever", "start", "-c", "nodejs", "/var/www/html/server/app.js"]
+CMD ["nodejs", "/var/www/html/server/app.js"]
