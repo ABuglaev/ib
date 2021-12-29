@@ -18,7 +18,7 @@ COPY . /www
 
 RUN apk add --update npm
 
-RUN cd /var/www/html/server/ && npm install
+RUN cd /www/server/ && npm install
 
 EXPOSE 3012
 
