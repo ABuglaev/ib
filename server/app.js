@@ -1,9 +1,22 @@
 var express = require('express');
-//var bodyParser = require('body-parser');
+var aws = require('aws-sdk');
+    aws.config.update({region: 'eu-central-1'});
 var MongoClient = require('mongodb').MongoClient;
 var path = require('path');
 var multer = require('multer');
+var multerS3 = require('multer-s3')
+var s3 = new aws.S3({apiVersion: '2006-03-01'})
 var db;
+
+// Call S3 to list the buckets
+s3.listBuckets(function(err, data) {
+  if (err) {
+    console.log("Error", err);
+  } else {
+    console.log("Success", data.Buckets);
+  }
+});
+
 
 // Set storage engine
 var storage = multer.diskStorage({
