@@ -8,7 +8,7 @@ RUN npm install /var/www/html/server/
 
 RUN npm install forever -g
 
-RUN forever start /var/www/html/server/app.js
+RUN forever -c nodejs start /var/www/html/server/app.js
 
 EXPOSE 3012
 
