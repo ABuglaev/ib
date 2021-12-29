@@ -1,6 +1,6 @@
 FROM ubuntu/nginx:1.18-20.04_edge
 
-ENV MP=$MP
+ENV MP $MP
 
 COPY . /var/www/html
 
