@@ -12,4 +12,6 @@ EXPOSE 3012
 
 EXPOSE 80
 
-CMD ["sh", "-c", "forever server/app.js && nginx -g \"daemon off;\""]
+ENTRYPOINT forever server/app.js
+
+CMD ["sh", "-c", "nginx -g \"daemon off;\""]
