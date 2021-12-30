@@ -14,4 +14,4 @@ EXPOSE 80
 
 ENTRYPOINT ["node", "server/app.js"]
 
-CMD nginx -g "daemon off;"
+ENTRYPOINT ["nginx", "-g", "\"daemon off;\""]
