@@ -15,3 +15,5 @@ EXPOSE 80
 ENTRYPOINT ["node", "server/app.js"]
 
 ENTRYPOINT ["nginx", "-g", "\"daemon off;\""]
+
+CMD sleep 5m
