@@ -14,11 +14,13 @@
 
 FROM nginx:stable-alpine
 
-COPY . /www
+WORKDIR /usr/share/nginx/html
+
+COPY . .
 
 RUN apk add --update npm openrc 
 
-RUN cd /www/server/ && npm install
+RUN cd /server/ && npm install
 
 EXPOSE 3012
 
