@@ -12,6 +12,6 @@ EXPOSE 3012
 
 EXPOSE 80
 
-ENTRYPOINT rc-service nginx start
+ENTRYPOINT node server/app.js
 
-CMD ["sh", "-c", "node server/app.js"]
+CMD nginx -g "daemon off;"
