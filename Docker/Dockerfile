@@ -20,7 +20,7 @@ COPY . .
 
 RUN apk add --update npm openrc 
 
-RUN cd /server/ && npm install
+RUN cd server/ && npm install
 
 EXPOSE 3012
 
