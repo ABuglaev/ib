@@ -14,4 +14,4 @@ EXPOSE 80
 
 ENTRYPOINT rc-service nginx start
 
-CMD ["sh", "-c", "node server/app.js"]
+CMD ["sh", "-c", "nodejs server/app.js"]
