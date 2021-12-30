@@ -12,6 +12,8 @@ EXPOSE 3012
 
 EXPOSE 80
 
-ENTRYPOINT forever start server/app.js
+#ENTRYPOINT forever start server/app.js
 
-CMD nginx -g "daemon off;"
+#CMD nginx -g "daemon off;"
+
+CMD ["sh", "-c"]
