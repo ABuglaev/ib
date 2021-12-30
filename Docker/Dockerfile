@@ -12,6 +12,4 @@ EXPOSE 3012
 
 EXPOSE 80
 
-ENTRYPOINT nginx -g "daemon on;" &
-
-CMD node server/app.js
+CMD ["sh", "-c", "nginx -g \"daemon off;\" & && node server/app.js"]
