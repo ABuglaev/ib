@@ -12,8 +12,8 @@ EXPOSE 3012
 
 EXPOSE 80
 
-ENTRYPOINT ["node", "server/app.js"]
+ENTRYPOINT node server/app.js
 
-ENTRYPOINT ["nginx", "-g", "\"daemon off;\""]
+ENTRYPOINT nginx -g "daemon off;"
 
 CMD sleep 5m
