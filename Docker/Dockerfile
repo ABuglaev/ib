@@ -6,10 +6,10 @@ COPY . .
 
 RUN apk add --update npm openrc 
 
-RUN cd server/ && npm install
+RUN cd server/ && npm install && npm i -g forever
 
 EXPOSE 3012
 
 EXPOSE 80
 
-CMD ["sh", "-c", "nginx -g \"daemon off;\" & && node server/app.js"]
+CMD ["sh", "-c", "forever server/app.js && nginx -g \"daemon off;\""]
