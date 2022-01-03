@@ -10,7 +10,7 @@ import axios from 'axios';
     //и URL составить исходя из этой переменной.
     axios({
       method: 'post',
-      url: `http://3.64.28.37:3012/${location.hash.substring(1)}`,
+      url: `http://tonight-network-lb-4b635db7ddc71029.elb.eu-central-1.amazonaws.com:3012/${location.hash.substring(1)}`, //3.64.28.37
       headers: { 'content-type': 'multipart/form-data' },
       data: _formData,
     })
@@ -24,7 +24,7 @@ import axios from 'axios';
 
     let getPosts = () => axios({
       method: 'get',
-      url: `http://3.64.28.37:3012/${location.hash.substring(1)}`,
+      url: `http://tonight-network-lb-4b635db7ddc71029.elb.eu-central-1.amazonaws.com:3012/${location.hash.substring(1)}`, //3.64.28.37
     })
     .catch(function (error) {
       console.log(error);
