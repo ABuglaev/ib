@@ -1,5 +1,5 @@
 import axios from 'axios';
-let serverEndpoint = '3.64.28.37';
+let serverEndpoint = 'tonight.by'; //3.64.28.37
   let sendPost = function(_formData){
     console.log('trying to send...');
 	  for (var value of _formData.values()) {
@@ -10,7 +10,7 @@ let serverEndpoint = '3.64.28.37';
     //и URL составить исходя из этой переменной.
     axios({
       method: 'post',
-      url: `http://${serverEndpoint}:3012/${location.hash.substring(1)}`, //3.64.28.37
+      url: `http://${serverEndpoint}:3012/${location.hash.substring(1)}`,
       headers: { 'content-type': 'multipart/form-data' },
       data: _formData,
     })
@@ -24,7 +24,7 @@ let serverEndpoint = '3.64.28.37';
 
     let getPosts = () => axios({
       method: 'get',
-      url: `http://${serverEndpoint}:3012/${location.hash.substring(1)}`, //3.64.28.37
+      url: `http://${serverEndpoint}:3012/${location.hash.substring(1)}`,
     })
     .catch(function (error) {
       console.log(error);
