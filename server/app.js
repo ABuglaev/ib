@@ -1,6 +1,10 @@
 var express = require('express');
 var aws = require('aws-sdk');
-    aws.config.update({region: 'eu-central-1'});
+    aws.config.update({
+            region: 'eu-central-1',
+            secretAccessKey: process.env.SAK,
+            accessKeyId: process.env.SKID,
+    });
 var MongoClient = require('mongodb').MongoClient;
 var path = require('path');
 var multer = require('multer');
