@@ -1,5 +1,5 @@
 import axios from 'axios';
-let serverEndpoint = '3.64.28.37'; //3.64.28.37 'tonight.by';
+let serverEndpoint = '3.71.38.120'; //3.64.28.37 'tonight.by' 3.71.38.120
   let sendPost = function(_formData){
     console.log('trying to send...');
 	  for (var value of _formData.values()) {
